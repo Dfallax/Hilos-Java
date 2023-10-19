@@ -21,9 +21,9 @@ public class MainHilos3 {
 		Scanner s = new Scanner(System.in);
 
 		System.out.print("Ingresa la cantidad de hilos que quieras: ");
-		int cantidadHilos = s.nextInt();
-		int numMayor = 0;
-		int numMenor = 100;
+		final int cantidadHilos = s.nextInt();
+		 int numMayor = 0;
+		 int numMenor = 100;
 		String HiloMayor="";
 		String HiloMenor="";
 		

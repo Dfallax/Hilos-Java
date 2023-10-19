@@ -1,6 +1,7 @@
 package clase;
 
 public class HiloCliente extends Thread {
+	
 	private CuentaBancaria cuenta;
 
 	public HiloCliente(CuentaBancaria cuenta) {
