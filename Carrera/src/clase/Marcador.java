@@ -1,34 +1,63 @@
 package clase;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Marcador {
 
-	private ArrayList<String> marcador = new ArrayList<String>();
-	private int posicion;
+	private ArrayList<String> pilotos = new ArrayList<String>();
+    private ArrayList<Integer> vueltas = new ArrayList<Integer>();
 	
-	public Marcador() {
+    
+    public Marcador() {
 		
 	}
-	public synchronized void actualizarMarcador(int vuelta) {
-		marcador.add("jolll");
+    
+    
+
+	public  void actualizarMarcador(String nombre, int vuelta) {
+       	System.out.println(nombre);
+	
+	for(int posNmb = 0; posNmb < pilotos.size();posNmb++ ) {
+		
+		if(pilotos.get(posNmb).equals(nombre)) {
 			
+			for(int posVuelta = 0; posVuelta < vueltas.size();posVuelta++) {
+				
+				if(vuelta>vueltas.get(posVuelta)) {
+					vueltas.set(posNmb,vuelta);
+					Collections.swap(pilotos, posNmb, posVuelta);
+					Collections.swap(vueltas, posNmb, posVuelta);
+					posNmb=pilotos.size();
+					break;	
+			}
+								
+												
+			}
+		}
+
 		
 	}
-	public ArrayList<String> getMarcador() {
-		return marcador;
+						
 	}
-
-	public void setMarcador(ArrayList<String> marcador) {
-		this.marcador = marcador;
+	
+	public void listaPilotos(ArrayList<String> pilotos) {
+		this.pilotos=pilotos;
 	}
-	public int getPosicion() {
-		return posicion;
+	
+	public ArrayList<String> getPilotos() {
+		return pilotos;
 	}
-	public void setPosicion(int posicion) {
-		this.posicion = posicion;
+	public void setPilotos(String pilotos) {
+		this.pilotos.add(pilotos);
 	}
-
+	public ArrayList<Integer> getVueltas() {
+		return vueltas;
+	}
+	public void setVueltas(int vueltas) {
+		this.vueltas.add(vueltas);
+	}
+	
 	
 	
 }

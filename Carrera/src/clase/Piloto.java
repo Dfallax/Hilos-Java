@@ -28,10 +28,10 @@ public class Piloto extends Thread {
 			
 			try {
 				
-				while(this.vuelta!=5) {
+				while(this.vuelta!=10) {
 				Thread.sleep(new Random().nextInt(300,4000));
 				this.vuelta++;
-				marcador.actualizarMarcador(vuelta);
+				marcador.actualizarMarcador(nombre,vuelta);
 				}
 				
 			} catch (InterruptedException e) {
@@ -60,10 +60,11 @@ public class Piloto extends Thread {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
+
 	public void setVuelta(int vuelta) {
-		vuelta = vuelta;
+		this.vuelta = vuelta;
 	}
+	
 	
 	
 }

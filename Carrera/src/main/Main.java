@@ -10,35 +10,39 @@ public class Main {
 	static Marcador marcador = new Marcador();
 
 	public static void main(String[] args) {
+
 		for (int i = 0; i < N; i++) {
 
 			Piloto p = new Piloto(marcador);
 			p.setNombre("C" + (i + 1));
-
+			marcador.setPilotos(p.getNombre());
+			marcador.setVueltas(p.getVuelta());
 			pilotos.add(p);
 			p.start();
 
 		}
-		
-		System.out.println("Coche Vuelta Posicion");
-		System.out.println("----------------------");
 
-		for (int i = 0; i < 20; i++) {
+		do {
+			System.out.println("Coche Vuelta Posicion");
+			System.out.println("----------------------");
 
 			try {
-				pilotos.get(i).join();
 				Thread.sleep(1000);
-					System.out.println(pilotos.get(i).getNombre() +"       "+pilotos.get(i).getMarcador().getMarcador());
-				
+
+				for (int i = 0; i < marcador.getPilotos().size(); i++) {
+
+					System.out.println(marcador.getPilotos().get(i) + "    " + marcador.getVueltas().get(i) + "    ("
+							+ (i + 1) + ")");
+
+				}
+
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 
-		}
-		
-		System.out.println("-------------------------");
-		
-}
+			System.out.println("-------------------------\n\n");
+		} while (marcador.getVueltas().get(N-1)!=10);
+
 	}
 
-		
+}
