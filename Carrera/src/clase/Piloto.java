@@ -3,7 +3,7 @@ package clase;
 import java.util.Random;
 
 public class Piloto extends Thread {
- 
+   private final int MAX_VUELTAS=10;
 	private Marcador marcador;
 	private String nombre;
 	private int vuelta;
@@ -28,8 +28,8 @@ public class Piloto extends Thread {
 			
 			try {
 				
-				while(this.vuelta!=10) {
-				Thread.sleep(new Random().nextInt(300,4000));
+				while(this.vuelta!=MAX_VUELTAS) {
+				Thread.sleep(new Random().nextInt(300,3001));
 				this.vuelta++;
 				marcador.actualizarMarcador(nombre,vuelta);
 				}
@@ -63,6 +63,10 @@ public class Piloto extends Thread {
 
 	public void setVuelta(int vuelta) {
 		this.vuelta = vuelta;
+	}
+
+	public int getMAX_VUELTAS() {
+		return MAX_VUELTAS;
 	}
 	
 	

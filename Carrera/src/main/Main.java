@@ -41,7 +41,7 @@ public class Main {
 			}
 
 			System.out.println("-------------------------\n\n");
-		} while (marcador.getVueltas().get(N-1)!=10);
+		} while (marcador.getVueltas().get(N-1)!=pilotos.get(0).getMAX_VUELTAS());
 
 	}
 

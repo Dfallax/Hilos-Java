@@ -16,7 +16,6 @@ public class Marcador {
     
 
 	public  void actualizarMarcador(String nombre, int vuelta) {
-       	System.out.println(nombre);
 	
 	for(int posNmb = 0; posNmb < pilotos.size();posNmb++ ) {
 		
