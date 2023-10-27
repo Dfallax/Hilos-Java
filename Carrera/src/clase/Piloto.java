@@ -3,7 +3,8 @@ package clase;
 import java.util.Random;
 
 public class Piloto extends Thread {
-   private final int MAX_VUELTAS=10;
+    
+	private final int MAX_VUELTAS=10;
 	private Marcador marcador;
 	private String nombre;
 	private int vuelta;
@@ -35,7 +36,6 @@ public class Piloto extends Thread {
 				}
 				
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			

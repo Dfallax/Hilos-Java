@@ -13,7 +13,6 @@ public class Marcador {
 		
 	}
     
-    
 
 	public  void actualizarMarcador(String nombre, int vuelta) {
 	
@@ -27,15 +26,14 @@ public class Marcador {
 					vueltas.set(posNmb,vuelta);
 					Collections.swap(pilotos, posNmb, posVuelta);
 					Collections.swap(vueltas, posNmb, posVuelta);
+					
 					posNmb=pilotos.size();
 					break;	
-			}
-								
-												
+			   }
+				
 			}
 		}
-
-		
+	
 	}
 						
 	}

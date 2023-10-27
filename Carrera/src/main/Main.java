@@ -23,24 +23,23 @@ public class Main {
 		}
 
 		do {
-			System.out.println("Coche Vuelta Posicion");
-			System.out.println("----------------------");
+			System.out.println("Coche  Vuelta Posicion");
+			System.out.println("-----------------------");
 
 			try {
 				Thread.sleep(1000);
 
 				for (int i = 0; i < marcador.getPilotos().size(); i++) {
 
-					System.out.println(marcador.getPilotos().get(i) + "    " + marcador.getVueltas().get(i) + "    ("
-							+ (i + 1) + ")");
-
+					System.out.printf("%-8s %-5s %-5s%n", marcador.getPilotos().get(i)
+					, marcador.getVueltas().get(i),"("+ (i + 1) + ")");			
 				}
 
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 
-			System.out.println("-------------------------\n\n");
+			System.out.println("------------------------\n\n");
 		} while (marcador.getVueltas().get(N-1)!=pilotos.get(0).getMAX_VUELTAS());
 
 	}
