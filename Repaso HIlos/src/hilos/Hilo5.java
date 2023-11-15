@@ -9,7 +9,7 @@ public class Hilo5 extends Thread{
 	private int signo;
 	
 	public Hilo5(Resultado balanza, int signo) {
-		this.balanza=balanza;
+	this.balanza=balanza;
 	this.signo=signo;
 	}
 	
