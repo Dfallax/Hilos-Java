@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import clase.Centro;
 import clase.Cita;
 import clase.Doctor;
 import clase.Paciente;
@@ -15,7 +16,6 @@ public class Main {
 
 	
 	static ArrayList<Paciente> listaPacientes =  new ArrayList<Paciente>();
-	static ArrayList<Doctor> listaDoctores = new ArrayList<Doctor>();
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -36,18 +36,21 @@ public class Main {
 			
 				while ((read=br.readLine()) != null){	
 
-				String datos[]= read.split(",");
+				String datosPersona[] = read.split(";");
+				String datosCita[];
 				
-				
-				if(read.charAt(0)=='#') {
+				while ((read=br.readLine()).charAt(0) == '#'){
 					
+					 datosCita = read.split(";");
+					 datosCita[0].replaceFirst("#", "");
 					
-					
-				}else {
-					
-					listaPacientes.add(new Paciente(Integer.parseInt(datos[0]),datos[1],datos[2],datos[3],datos[4],datos[5],new Cita()));
-
 				}
+
+			listaPacientes.add(new Paciente(Integer.parseInt(datosPersona[0]),datosPersona[1],datosPersona[2],datosPersona[3],datosPersona[4],datosPersona[5],
+								new Cita(new Centro(datosCita[0]), new Doctor(datosCita[1],datosCita[2]),datosCita[3],datosCita[4])));
+
+					
+				
 				
 				
 				
