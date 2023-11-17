@@ -3,9 +3,21 @@ package clase;
 public class Centro {
 
 	private String nombre;
-	private String especialidad;
-	//private Doctor doctor;
-	private String fecha;
-	private String hora;
+
+	public Centro(String nombre) {
+		super();
+		this.nombre = nombre;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	
+	
+	
 	
 }
