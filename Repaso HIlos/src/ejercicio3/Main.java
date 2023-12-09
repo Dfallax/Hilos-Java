@@ -3,7 +3,7 @@ package ejercicio3;
 import java.util.ArrayList;
 
 public class Main {
-	public static final int NUM_RECP_LIST = 2;
+	public static final int NUM_RECP_LIST = 4;
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

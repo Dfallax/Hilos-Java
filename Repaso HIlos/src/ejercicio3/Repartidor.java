@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class Repartidor extends Thread {
 
 	private ArrayList<Lista> listas;
+	
 
 	public void run() {
 		final String PATH = "ejercicio3.txt";
@@ -29,6 +30,7 @@ public class Repartidor extends Thread {
 			System.out.println("REPARTIDOOO");
 			Lista.setRepartidorFinish(true);
 			
+
 			fr.close();
 			br.close();
 		} catch (FileNotFoundException e) {

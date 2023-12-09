@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Lista {
 
 	private ArrayList<Integer> numeros;
-	private static final int CAPACIDAD = 1;
+	private static final int CAPACIDAD = 2;
 	public static boolean repartidorFinish; 
 	
 	public synchronized void agregar(int numero) {
@@ -28,7 +28,7 @@ public class Lista {
 	public synchronized int extraer() {
 
 		while (numeros.isEmpty()) {
-System.out.println("enceradooooo");
+				System.out.println("enceradooooo");
 			try {
 				wait();
 

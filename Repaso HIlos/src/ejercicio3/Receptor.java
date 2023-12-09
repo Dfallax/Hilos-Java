@@ -4,17 +4,18 @@ public class Receptor extends Thread {
 
 	private Lista lista;
 	private int numMax;
-
+	
 	public void run() {
-		while (!Lista.repartidorFinish || !lista.getNumeros().isEmpty()) {
-			System.out.println(Lista.repartidorFinish);
-
-
-			numMax = Math.max(lista.extraer(), numMax);
+		
+		do {
 			
-		}
-	System.out.println("ACABDOO");
-	System.out.println(Lista.repartidorFinish);
+			while (!lista.getNumeros().isEmpty()) {
+				//System.out.println(Lista.repartidorFinish);
+				numMax = Math.max(lista.extraer(), numMax);				
+			}
+
+		}while(!Lista.repartidorFinish);
+		System.out.println("ACABDOO");
 
 	}
 
