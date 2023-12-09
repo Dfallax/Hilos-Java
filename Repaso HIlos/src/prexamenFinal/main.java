@@ -22,7 +22,6 @@ public class main {
 	            h1.join();
 	            h2.join();
 	        } catch (InterruptedException e) {
-	            // TODO Auto-generated catch block
 	            e.printStackTrace();
 	        }
 

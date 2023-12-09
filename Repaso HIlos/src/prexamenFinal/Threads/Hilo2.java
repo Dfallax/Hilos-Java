@@ -1,6 +1,7 @@
 package prexamenFinal.Threads;
 
 public class Hilo2 extends Thread {
+	
     private Lista lista;
     private int contador;
   
@@ -9,8 +10,7 @@ public class Hilo2 extends Thread {
 
        while( !lista.productorFinish ||  !lista.getCaracteres().isEmpty()) {
         	
-            char caracter = lista.quitar();
-            if (Character.isDigit(caracter)) {
+            if (Character.isDigit(lista.quitar())) {
                 contador++;
             }
         }
