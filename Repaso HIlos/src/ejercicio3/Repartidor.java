@@ -18,14 +18,14 @@ public class Repartidor extends Thread {
 			FileReader fr = new FileReader(PATH);
 			BufferedReader br = new BufferedReader(fr);
 			String read;
-
+			
 			for (int posLista = 0; (read = br.readLine()) != null; posLista++) {
 				
 				if (posLista == Main.NUM_RECP_LIST) {
 					posLista = 0;
 				}
 				listas.get(posLista).agregar(Integer.parseInt(read));
-
+				
 			}
 			System.out.println("REPARTIDOOO");
 			Lista.setRepartidorFinish(true);
