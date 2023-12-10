@@ -7,7 +7,7 @@ public class Main {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-	
+		 long startTime = System.currentTimeMillis();
 		ArrayList<Receptor> receptores = new ArrayList<>(); 
 		ArrayList<Lista> listas = new ArrayList<>(); 
 		Repartidor repartidor;
@@ -41,6 +41,14 @@ public class Main {
 			 
 			 System.out.println("Repartidor "+(i+1)+") Numero mayor es: " + receptores.get(i).getNumMax());
 		 }
+		 
+		
+		 
+	        long endTime = System.currentTimeMillis();
+	        long totalTime = endTime - startTime;
+	        
+	        System.out.println("Tiempo transcurrido en milisegundos: " + totalTime);
+	  
 	}
 
 }
