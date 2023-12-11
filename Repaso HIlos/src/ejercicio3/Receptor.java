@@ -10,17 +10,21 @@ public class Receptor extends Thread {
 	 * Cambiar el el boolean y hacer un tipo for en donde se buscara un limite que se irá atcualizando
 	 * a medida que va agregando el numero y a la vez no rompa el bucle hasta que termine el repartidor
 	 * BUSCAR OTRA MANERA DE TERMINA EL BUCLEL==>boolean
-	 * meter el limite desde la lista compartida*/
+	 * meter el limite desde la lista compartida
+	 * 
+	 * usar wait para esperar para que llegue el boolean*/
+	
 	public void run() {
 
-		int aux;
+		
 		while (!lista.getNumeros().isEmpty() || !Lista.repartidorFinish) {
 
-			aux=lista.extraer();
 			
-			numMax = Math.max(aux, numMax);
-			System.out.println("lista "+lista.getNumeros().isEmpty());
-			System.out.println(Lista.repartidorFinish);
+			if(!lista.getNumeros().isEmpty() ) {
+				numMax = Math.max(lista.extraer(), numMax);
+	
+			}
+			
 
 		}
 
