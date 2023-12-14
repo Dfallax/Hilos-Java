@@ -10,7 +10,7 @@ public class Consumidor extends Thread {
 
 		String split[] = null;
 
-		while (lista.productorFinish || !lista.getNumeros().isEmpty()) {
+		while (lista.isProductorFinish() || !lista.getNumeros().isEmpty()) {
 
 			if ((cadena = lista.extraer()) != null) {
 

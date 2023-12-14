@@ -8,12 +8,13 @@ import java.io.IOException;
 public class Productor extends Thread {
 
 	private Lista lista;
+	private String nombreArchivo;
 
 
 	public void run() {
 		
 		try {
-			FileReader fr = new FileReader("numeros.txt");
+			FileReader fr = new FileReader(nombreArchivo);
 			BufferedReader br = new BufferedReader(fr);
 			String read;
 			
@@ -35,9 +36,10 @@ public class Productor extends Thread {
 	}
 	
 	
-	public Productor(Lista lista) {
+	public Productor(Lista lista,String nombreArchivo) {
 		super();
 		this.lista = lista;
+		this.nombreArchivo = nombreArchivo;
 	}
 
 	public Lista getLista() {
@@ -47,6 +49,19 @@ public class Productor extends Thread {
 	public void setLista(Lista lista) {
 		this.lista = lista;
 	}
+
+
+	
+	public String getNombreArchivo() {
+		return nombreArchivo;
+	}
+
+
+	public void setNombreArchivo(String nombreArchivo) {
+		this.nombreArchivo = nombreArchivo;
+	}
+
+
 	
 	
 	

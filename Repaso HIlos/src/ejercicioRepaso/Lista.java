@@ -5,8 +5,9 @@ import java.util.ArrayList;
 public class Lista {
 
 	private ArrayList<String> numeros;
-	private final int CAPACIDAD = 10;
-	public boolean productorFinish=true;
+	private final int CAPACIDAD = 20;
+	public boolean productorFinish = true;
+	public int contadorFinish;
 	private int contador;
 
 	public synchronized void agregar(String numero) {
@@ -41,6 +42,7 @@ public class Lista {
 		if (numeros.isEmpty()) {
 			return null;
 		} else {
+
 			return numeros.remove(0);
 
 		}
@@ -48,7 +50,7 @@ public class Lista {
 	}
 
 	public synchronized void numEnontrado(int numero) {
-	
+
 		this.contador += numero;
 
 	}
@@ -76,11 +78,18 @@ public class Lista {
 	}
 
 	public boolean isProductorFinish() {
+
 		return productorFinish;
 	}
 
 	public synchronized void setProductorFinish(boolean productorFinish) {
-		this.productorFinish = productorFinish;
+		contadorFinish++;
+
+		if (contadorFinish == Main.numArchivos) {
+			this.productorFinish = false;
+		} else {
+			this.productorFinish = true;
+		}
 		notifyAll();
 	}
 
