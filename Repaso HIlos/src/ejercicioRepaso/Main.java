@@ -19,7 +19,9 @@ public class Main {
 		Lista l = new Lista();
 		ArrayList<Consumidor> hilos = new ArrayList<>();
 		ArrayList<Productor> hilosP = new ArrayList<>();
-		nomrbresArchivos();
+		System.out.print("Escriba la ruta de la carpeta\n>");
+		final String PATH_D = s.nextLine();
+		nomrbresArchivos(PATH_D);
 		
 		if (!nombresArchivos.isEmpty()) {
 			numArchivos = nombresArchivos.size();
@@ -27,8 +29,10 @@ public class Main {
 			System.out.print("ingresa el numero a buscar\n>");
 			numero = s.nextInt();
 			System.out.print("Cuantos hilos quieres lanzar?\n>");
+			
 			final int MAX_H = s.nextInt();
-
+			
+			
 			for (int i = 0; i < MAX_H; i++) {
 
 				c = new Consumidor(l);
@@ -62,9 +66,9 @@ public class Main {
 		}
 	}
 
-	public static void nomrbresArchivos() {
-		final String PATH_D = ".";
-		File f = new File(PATH_D);
+	public static void nomrbresArchivos(String path) {
+		
+		File f = new File(path);
 		String[] nombres = f.list();
 
 		for (int i = 0; i < nombres.length; i++) {
