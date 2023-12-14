@@ -8,13 +8,13 @@ import java.io.IOException;
 public class Productor extends Thread {
 
 	private Lista lista;
-	private String nombreArchivo;
+	private String pathArchivo;
 
 
 	public void run() {
 		
 		try {
-			FileReader fr = new FileReader(nombreArchivo);
+			FileReader fr = new FileReader(pathArchivo);
 			BufferedReader br = new BufferedReader(fr);
 			String read;
 			
@@ -23,7 +23,7 @@ public class Productor extends Thread {
 				lista.agregar(read);
 				
 			}
-			lista.setProductorFinish(false);
+			lista.setContadorFinish(1);
 			fr.close();
 			br.close();
 		} catch (FileNotFoundException e) {
@@ -36,10 +36,10 @@ public class Productor extends Thread {
 	}
 	
 	
-	public Productor(Lista lista,String nombreArchivo) {
+	public Productor(Lista lista,String pathArchivo) {
 		super();
 		this.lista = lista;
-		this.nombreArchivo = nombreArchivo;
+		this.pathArchivo = pathArchivo;
 	}
 
 	public Lista getLista() {
@@ -51,15 +51,18 @@ public class Productor extends Thread {
 	}
 
 
+	public String getPathArchivo() {
+		return pathArchivo;
+	}
+
+
+	public void setPathArchivo(String pathArchivo) {
+		this.pathArchivo = pathArchivo;
+	}
+
+
 	
-	public String getNombreArchivo() {
-		return nombreArchivo;
-	}
-
-
-	public void setNombreArchivo(String nombreArchivo) {
-		this.nombreArchivo = nombreArchivo;
-	}
+	
 
 
 	

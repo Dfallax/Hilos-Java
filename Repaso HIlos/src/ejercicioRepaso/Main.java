@@ -11,9 +11,7 @@ public class Main {
 	static ArrayList<String> nombresArchivos = new ArrayList<>();
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-		Scanner s = new Scanner(System.in);
+				Scanner s = new Scanner(System.in);
 		Consumidor c;
 		Productor p;
 		Lista l = new Lista();
@@ -22,17 +20,16 @@ public class Main {
 		System.out.print("Escriba la ruta de la carpeta\n>");
 		final String PATH_D = s.nextLine();
 		nomrbresArchivos(PATH_D);
-		
+
 		if (!nombresArchivos.isEmpty()) {
 			numArchivos = nombresArchivos.size();
-			
+
 			System.out.print("ingresa el numero a buscar\n>");
 			numero = s.nextInt();
 			System.out.print("Cuantos hilos quieres lanzar?\n>");
-			
 			final int MAX_H = s.nextInt();
 			
-			
+			long startTime = System.currentTimeMillis();
 			for (int i = 0; i < MAX_H; i++) {
 
 				c = new Consumidor(l);
@@ -57,23 +54,27 @@ public class Main {
 				}
 
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 
 			System.out.println("El numero total de veces que se ha encontrado el numero es: " + l.getContador());
+			long endTime = System.currentTimeMillis();
+			long totalTime = endTime - startTime;
+
+			System.out.println("Tiempo transcurrido en milisegundos: " + totalTime);
 
 		}
 	}
 
 	public static void nomrbresArchivos(String path) {
-		
+
 		File f = new File(path);
 		String[] nombres = f.list();
 
 		for (int i = 0; i < nombres.length; i++) {
-			if (nombres[i].contains("numeros")) {
-				nombresArchivos.add(nombres[i]);
+			if (nombres[i].contains("rand")) {
+				nombresArchivos.add(path+"\\"+nombres[i]);
 			}
 		}
 

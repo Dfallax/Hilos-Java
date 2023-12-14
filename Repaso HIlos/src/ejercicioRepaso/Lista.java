@@ -5,22 +5,13 @@ import java.util.ArrayList;
 public class Lista {
 
 	private ArrayList<String> numeros;
-	private final int CAPACIDAD = 20;
-	public boolean productorFinish = true;
+	private final int CAPACIDAD = 10;
 	public int contadorFinish;
 	private int contador;
 
 	public synchronized void agregar(String numero) {
 
-		while (numeros.size() == CAPACIDAD) {
-
-			try {
-				wait();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-
-		}
+		
 		numeros.add(numero);
 		System.out.println("add");
 		notifyAll();
@@ -28,7 +19,7 @@ public class Lista {
 
 	public synchronized String extraer() {
 
-		while (numeros.isEmpty() && productorFinish) {
+		while (numeros.isEmpty() && contadorFinish != Main.numArchivos) {
 			System.out.println("encerrado");
 			try {
 				wait();
@@ -42,11 +33,15 @@ public class Lista {
 		if (numeros.isEmpty()) {
 			return null;
 		} else {
-
 			return numeros.remove(0);
 
 		}
 
+	}
+
+	public synchronized void setContadorFinish(int contadorFinish) {
+		this.contadorFinish += contadorFinish;
+		notifyAll();
 	}
 
 	public synchronized void numEnontrado(int numero) {
@@ -77,20 +72,8 @@ public class Lista {
 		this.numeros = numeros;
 	}
 
-	public boolean isProductorFinish() {
-
-		return productorFinish;
-	}
-
-	public synchronized void setProductorFinish(boolean productorFinish) {
-		contadorFinish++;
-
-		if (contadorFinish == Main.numArchivos) {
-			this.productorFinish = false;
-		} else {
-			this.productorFinish = true;
-		}
-		notifyAll();
+	public int getContadorFinish() {
+		return contadorFinish;
 	}
 
 	public int getCAPACIDAD() {

@@ -3,14 +3,13 @@ package ejercicioRepaso;
 public class Consumidor extends Thread {
 
 	private Lista lista;
-	//private Registro registro;
 	private String cadena;
 
 	public void run() {
 
-		String split[] = null;
+		String split[];
 
-		while (lista.isProductorFinish() || !lista.getNumeros().isEmpty()) {
+		while (lista.getContadorFinish()!= Main.numArchivos || !lista.getNumeros().isEmpty()) {
 
 			if ((cadena = lista.extraer()) != null) {
 
