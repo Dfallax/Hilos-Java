@@ -11,7 +11,7 @@ public class Main {
 	static ArrayList<String> nombresArchivos = new ArrayList<>();
 
 	public static void main(String[] args) {
-				Scanner s = new Scanner(System.in);
+		Scanner s = new Scanner(System.in);
 		Consumidor c;
 		Productor p;
 		Lista l = new Lista();

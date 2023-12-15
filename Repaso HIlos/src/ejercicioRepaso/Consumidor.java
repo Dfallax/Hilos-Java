@@ -27,7 +27,7 @@ public class Consumidor extends Thread {
 			}
 
 		}
-		System.out.println("termine");
+		//System.out.println("termine");
 
 	}
 

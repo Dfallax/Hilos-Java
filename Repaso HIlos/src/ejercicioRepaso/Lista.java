@@ -11,16 +11,24 @@ public class Lista {
 
 	public synchronized void agregar(String numero) {
 
-		
+		while (numeros.size() == CAPACIDAD) {
+			//System.out.println("encerrado");
+			try {
+				wait();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+
+		}
 		numeros.add(numero);
-		System.out.println("add");
+		//System.out.println("add");
 		notifyAll();
 	}
 
 	public synchronized String extraer() {
 
 		while (numeros.isEmpty() && contadorFinish != Main.numArchivos) {
-			System.out.println("encerrado");
+			//System.out.println("encerrado");
 			try {
 				wait();
 			} catch (InterruptedException e) {
@@ -59,9 +67,7 @@ public class Lista {
 	}
 
 	public Lista() {
-
 		numeros = new ArrayList<>();
-
 	}
 
 	public ArrayList<String> getNumeros() {
