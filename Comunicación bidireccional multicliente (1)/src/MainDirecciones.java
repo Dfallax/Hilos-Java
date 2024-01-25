@@ -8,7 +8,7 @@ public class MainDirecciones {
 
 		try {
 			InetAddress direccionLocal = InetAddress.getByName("localhost");
-			InetAddress[] todasDirecciones = InetAddress.getAllByName("PC18625");
+			InetAddress[] todasDirecciones = InetAddress.getAllByName("PC18636");
 
 			System.out.println(direccionLocal.getHostName());
 			System.out.println(direccionLocal.getHostAddress());
