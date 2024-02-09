@@ -21,7 +21,7 @@ public class MainCliente {
 			String mensajeRecibido = "";
 			
 			//Alberto PC18634
-			while (!(mensajeRecibido = dis.readUTF()).trim().split(";")[0].toLowerCase().equals("fin")) {
+			while (!(mensajeRecibido = dis.readUTF()).trim().toLowerCase().equals("fin")) {
 				
 				ventana.mensajes.append(mensajeRecibido+"\n");	
 				

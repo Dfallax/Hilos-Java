@@ -1,81 +1,45 @@
 package chat;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
 import java.util.ArrayList;
 
-import connection.Conexion;
 import entities.User;
 
 public class MainServidor {
-	static ArrayList<User> listaUsuario = new ArrayList<>();
-	static String respuesta;
+	public static ArrayList<User> listaUsuario = new ArrayList<>();
+	public static ArrayList<HiloUsuario> listaConexiones = new ArrayList<>();
 
 	public static void main(String[] args) {
-		try {
-			ServerSocket serverSocket = new ServerSocket(6565);
-			String mensaje;
+		try (ServerSocket serverSocket = new ServerSocket(6565)) {
 
-			do {
-				// accept() es bloqueante
+			while (true) {
+
 				Socket socketCliente = serverSocket.accept();
-				DataInputStream dis = new DataInputStream(socketCliente.getInputStream());
-				DataOutputStream dos = new DataOutputStream(socketCliente.getOutputStream());
-				dos.writeUTF("Selecciona una opcion\n" + "1).Ver\n2).Insertar\n3).Modificar\n4).Borrar");
-				mensaje = dis.readUTF();
-					
-				switch (Integer.parseInt(mensaje)) {
-				case 1:
-					try (Connection con = Conexion.open()) {
-						printSQL(con, "SELECT * from usuario");
-					} catch (SQLException ex) {
-						ex.printStackTrace();
+				HiloUsuario newHilo = new HiloUsuario(socketCliente);
+
+				for (int x = 0; x < listaConexiones.size(); x++) {
+
+					if (newHilo.getSocket().getInetAddress().getHostName()
+							.equals(listaConexiones.get(x).getSocket().getInetAddress().getHostName())) {
+
+						listaConexiones.remove(x);
+						break;
 					}
-						dos.writeUTF(listaUsuario.toString());
-						
-					break;
-				case 2:
-						
-					break;
 				}
+				listaConexiones.add(newHilo);
+				newHilo.start();
 
-				// Leemos el mensaje y lo ponemos por consola
-				System.out.println(
-						"Mensaje de " + socketCliente.getInetAddress().getHostName() + " recibido: " + mensaje);
+			}
 
-				// Cerrar conexiones y streams
-				dis.close();
-				socketCliente.close();
-			} while (!mensaje.equals("exit"));
-
-			serverSocket.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
 	}
 
-	public static void printSQL(Connection con, String query) {
-		try (PreparedStatement ps = con.prepareStatement(query)) {
-			try (ResultSet rs = ps.executeQuery()) {
-				while (rs.next()) {
-					User newUser = new User(rs.getInt("id"), rs.getString("name"), rs.getString("apellido1"),
-							rs.getString("apellido2"), rs.getInt("edad"), rs.getString("nacimineto"));
-					listaUsuario.add(newUser);
-				}
-
-			}
-
-		} catch (SQLException ex) {
-			ex.printStackTrace();
-		}
-	}
+	
 
 }

@@ -19,12 +19,16 @@ public class Ventana extends JFrame {
 	private final JTextArea prompt = new JTextArea();
 	// Botón de envío
 	private final JButton boton = new JButton();
+	private final JScrollPane panel1 = new JScrollPane(mensajes);
+	private final JScrollPane panel2 = new JScrollPane(prompt);
+
 
 	public Ventana() {
 		// Distribución de los componentes por zonas de la ventana
 		setLayout(new BorderLayout());
-
-		mensajes.setPreferredSize(new Dimension(400, 200));
+			
+		panel1.setPreferredSize(new Dimension(400, 200));
+		panel2.setPreferredSize(new Dimension(400, 200));
 		prompt.setPreferredSize(new Dimension(200, 30));
 		boton.setPreferredSize(new Dimension(20, 30));
 		prompt.setToolTipText("Escribe aquí tu mensaje...");
@@ -40,8 +44,8 @@ public class Ventana extends JFrame {
 		//jList
 		//buscar como crear un j list
 
-		add(new JScrollPane(mensajes), BorderLayout.NORTH);
-		add(new JScrollPane(prompt), BorderLayout.CENTER);
+		add(panel1, BorderLayout.NORTH);
+		add(panel2, BorderLayout.CENTER);
 		add(boton, BorderLayout.SOUTH);
 		//Aca se añade la lista
 		pack();
@@ -55,7 +59,7 @@ public class Ventana extends JFrame {
 		String mensaje = prompt.getText();
 
 		// Mostrar mensaje en el área de texto
-		mensajes.append("Yo: " + mensaje + "\n");
+		mensajes.append(mensaje + "\n");
 		MainCliente.enviarMensaje(mensaje);
 		// Borrar el mensaje enviado del prompt
 		prompt.setText("");

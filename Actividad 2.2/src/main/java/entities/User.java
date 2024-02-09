@@ -5,15 +5,15 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", nombre=" + nombre + ", appellido1=" + appellido1 + ", appellido2=" + appellido2
+		return "User [id=" + id + ", nombre=" + nombre + ", appellido1=" + apellido1 + ", appellido2=" + apellido2
 				+ ", edad=" + edad + ", nacimiento=" + nacimiento + "]\n";
 	}
 
 	// (nombre, apellido1, apellido2, edad (años) y nacimiento
 	private int id;
 	private String nombre;
-	private String appellido1;
-	private String appellido2;
+	private String apellido1;
+	private String apellido2;
 	private int edad;
 	private String nacimiento;
 
@@ -22,12 +22,11 @@ public class User {
 	}
 
 	
-	public User(int id, String nombre, String appellido1, String appellido2, int edad, String nacimiento) {
-		super();
+	public User(int id, String nombre, String apellido1, String apellido2, int edad, String nacimiento) {
 		this.id = id;
 		this.nombre = nombre;
-		this.appellido1 = appellido1;
-		this.appellido2 = appellido2;
+		this.apellido1 = apellido1;
+		this.apellido2 = apellido2;
 		this.edad = edad;
 		this.nacimiento = nacimiento;
 	}
@@ -48,23 +47,23 @@ public class User {
 
 	
 
-	public String getAppellido1() {
-		return appellido1;
+	public String getApellido1() {
+		return apellido1;
 	}
 
 
-	public void setAppellido1(String appellido1) {
-		this.appellido1 = appellido1;
+	public void setApellido1(String apellido1) {
+		this.apellido1 = apellido1;
 	}
 
 
-	public String getAppellido2() {
-		return appellido2;
+	public String getApellido2() {
+		return apellido2;
 	}
 
 
-	public void setAppellido2(String appellido2) {
-		this.appellido2 = appellido2;
+	public void setApellido2(String apellido2) {
+		this.apellido2 = apellido2;
 	}
 
 
