@@ -4,11 +4,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import servidor_cliente.MainServidor;
 import entities.User;
 
 public class Crud {
+	
 
 	private static Crud instance;
 
@@ -80,9 +82,11 @@ public class Crud {
 	public void getAlluser(Connection con, String query) {
 		try (PreparedStatement ps = con.prepareStatement(query)) {
 			try (ResultSet rs = ps.executeQuery()) {
+				MainServidor.listaUsuario = new ArrayList<>();
 				while (rs.next()) {
 					User newUser = new User(rs.getInt("id"),rs.getString("name"), rs.getString("apellido1"),
 							rs.getString("apellido2"), rs.getInt("edad"), rs.getString("nacimineto"));
+					
 					MainServidor.listaUsuario.add(newUser);
 				}
 

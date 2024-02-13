@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import entities.User;
 
 public class MainServidor {
-	public static ArrayList<User> listaUsuario = new ArrayList<>();
+	public static ArrayList<User> listaUsuario;
 	public static ArrayList<HiloUsuario> listaConexiones = new ArrayList<>();
 
 	public static void main(String[] args) {
@@ -19,7 +19,7 @@ public class MainServidor {
 
 				Socket socketCliente = serverSocket.accept();
 				HiloUsuario newHilo = new HiloUsuario(socketCliente);
-
+				System.out.println(listaConexiones.size());
 				for (int x = 0; x < listaConexiones.size(); x++) {
 
 					if (newHilo.getSocket().getInetAddress().getHostName()

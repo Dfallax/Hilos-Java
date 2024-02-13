@@ -5,8 +5,8 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", nombre=" + nombre + ", appellido1=" + apellido1 + ", appellido2=" + apellido2
-				+ ", edad=" + edad + ", nacimiento=" + nacimiento + "]\n";
+		return "id=" + id + ", nombre=" + nombre + ", appellido1=" + apellido1 + ", appellido2=" + apellido2
+				+ ", edad=" + edad + ", nacimiento=" + nacimiento+"\n";
 	}
 
 	// (nombre, apellido1, apellido2, edad (años) y nacimiento
