@@ -1,0 +1,17 @@
+DROP DATABASE IF EXISTS servidor_cliente;
+CREATE DATABASE servidor_cliente;
+USE servidor_cliente;
+
+DROP TABLE IF EXISTS usuario;
+
+CREATE TABLE usuario(
+  id INTEGER AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(30),
+  apellido1 VARCHAR(15),
+  apellido2 VARCHAR(15),
+  edad INTEGER,
+  nacimiento DATE
+);
+
+INSERT INTO usuario (name, apellido1, apellido2, edad, nacimiento)
+VALUES ('John', 'Doe', 'Smith', 25, '1999-01-01');
