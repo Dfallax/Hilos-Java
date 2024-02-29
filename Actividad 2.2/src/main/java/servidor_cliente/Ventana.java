@@ -1,4 +1,4 @@
-package chat;
+package servidor_cliente;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -28,7 +28,7 @@ public class Ventana extends JFrame {
 		setLayout(new BorderLayout());
 			
 		panel1.setPreferredSize(new Dimension(400, 200));
-		panel2.setPreferredSize(new Dimension(400, 200));
+		panel2.setPreferredSize(new Dimension(400, 50));
 		prompt.setPreferredSize(new Dimension(200, 30));
 		boton.setPreferredSize(new Dimension(20, 30));
 		prompt.setToolTipText("Escribe aquí tu mensaje...");

@@ -1,4 +1,4 @@
-package chat;
+package servidor_cliente;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -21,18 +21,18 @@ public class MainCliente {
 			String mensajeRecibido = "";
 			
 			//Alberto PC18634
-			while (!(mensajeRecibido = dis.readUTF()).trim().toLowerCase().equals("fin")) {
+			while (!(mensajeRecibido = dis.readUTF()).trim().toLowerCase().equals("5")) {
 				
-				ventana.mensajes.append(mensajeRecibido+"\n");	
+				ventana.mensajes.append(mensajeRecibido);	
 				
 			}
-			
 			ventana.dispose();
 			
 			// Cierre de todas las conexiones o streams de datos
 			dos.close();
 			dis.close();
 			socket.close();
+			System.out.println("TO SECRRADO");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
