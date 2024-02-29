@@ -62,13 +62,13 @@ public class Crud {
 		}
 	}
 
-	public void delete(Connection con, int primaryKey) {
+	public void delete(Connection con, int posUser) {
 
 		String sql = "DELETE FROM usuario WHERE id = ?";
 
 		try (PreparedStatement ps = con.prepareStatement(sql)) {
-
-			ps.setInt(1, primaryKey);
+			
+			ps.setInt(1, Main.l);
 
 			int nFilas = ps.executeUpdate();
 
